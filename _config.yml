@@ -1,17 +1,21 @@
 title: Germán Ruiz Mudarra
-description: >
-Electronics, Robotics and Mechatronics Engineer. M.Sc. in Mechatronics Engineering. # add description
-permalink: ':title/'
-baseurl: "/" # the subpath of your site, e.g. /blog
+description: > # this means to ignore newlines until "baseurl:"
+  Electronics, Robotics and Mechatronics Engineer. Master's degree in Mechatronics Engineering.
+# permalink: ':title/'
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://gruizmudarra.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Author Settings
 author: Germán Ruiz Mudarra # add your name
 author-img: german-ruiz.jpg # add your photo
-about-author: Electronics, Robotics and Mechatronics Engineer. M.Sc. in Mechatronics Engineering. # add description
+about-author: Electronics, Robotics and Mechatronics Engineer. Master's degree in Mechatronics Engineering. # add description
+
 social-github: gruizmudarra # add your Github handle
 social-linkedin: gruizmudarra # add your Linkedin handle
 social-email: germanruizmudarra@gmail.com # add your Email address
+
+# Tracker
+analytics: # Google Analytics
 
 # Build Settings
 markdown: kramdown
