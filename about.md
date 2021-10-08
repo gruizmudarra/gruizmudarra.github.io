@@ -1,9 +1,16 @@
 ---
 layout: page
 title: About me
+permalink: /about/
 ---
+### Hi, I'm Germán and this is my personal portfolio :wave:
 
-# **I'm Germán Ruiz Mudarra!**
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar diam vitae aliquet interdum. Cras ullamcorper rhoncus ipsum, ut tempus mi consequat vitae. In pretium, quam ac tristique mattis, enim diam vehicula metus, ut tempus enim neque at ante. Sed pulvinar convallis tortor, id vulputate odio vehicula vel. Vivamus id ornare libero. Morbi imperdiet nec ante non hendrerit. Nulla mollis nulla ut ullamcorper sollicitudin. Curabitur scelerisque ornare neque a varius. Curabitur porta, diam bibendum vehicula fringilla, enim dolor luctus ipsum, et consequat tortor justo non arcu. Nam et risus blandit, ultricies odio vitae, aliquet velit. Morbi feugiat enim justo, at facilisis nisl sagittis vel. Integer ornare sagittis neque, sed hendrerit lorem. In bibendum felis ut metus molestie, nec aliquet est cursus. Phasellus posuere libero sed elit mattis porta.
+I am an Electronics, Robotics and Mechatronics Engineer, specialized in robotics and automation. 
 
-Donec nec turpis felis. Nam quis commodo velit. Curabitur ullamcorper, quam ac consectetur scelerisque, lectus eros condimentum magna, ultrices placerat dolor ligula faucibus dui. Cras placerat rutrum nisl. Duis at risus lacinia turpis porta facilisis. Sed tristique quam leo. Nunc nec magna nisl. Integer porta scelerisque elementum.
+I have always had great interest in the advances of the engineering and tech industries. That's the reason why I decided to study this degree in the University of Málaga: I wanted to be capable of understand the various disciplines related to the most cutting edge innovations.
+
+After graduating, I have studied the M.Sc. in Mechatronics Engineering, focusing the optional courses to extend my knowledge in robotics, computer vision, AI and electronics.
+
+I'm also part of the UMA Garage Autonomous Driving Team where we develop software for a 1/10 scaled car that needs to drive autonomously. The final system will be presented and evaluated in the Autonomous Driving Challenge organized by CARNET, Seat and the Volkswagen Research Group later in 2021 in Barcelona.
+
+I am currently open to job offers, so if you are interested feel free to contact me via [email](mailto:germanruizmudarra@gmail.com) or [Linkedin](https://linkedin.com/in/gruizmudarra) :smiley:

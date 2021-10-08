@@ -1,8 +1,69 @@
 ---
 layout: page
 title: Resume
+permalink: /resume/
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar diam vitae aliquet interdum. Cras ullamcorper rhoncus ipsum, ut tempus mi consequat vitae. In pretium, quam ac tristique mattis, enim diam vehicula metus, ut tempus enim neque at ante. Sed pulvinar convallis tortor, id vulputate odio vehicula vel. Vivamus id ornare libero. Morbi imperdiet nec ante non hendrerit. Nulla mollis nulla ut ullamcorper sollicitudin. Curabitur scelerisque ornare neque a varius. Curabitur porta, diam bibendum vehicula fringilla, enim dolor luctus ipsum, et consequat tortor justo non arcu. Nam et risus blandit, ultricies odio vitae, aliquet velit. Morbi feugiat enim justo, at facilisis nisl sagittis vel. Integer ornare sagittis neque, sed hendrerit lorem. In bibendum felis ut metus molestie, nec aliquet est cursus. Phasellus posuere libero sed elit mattis porta.
+Education
+---------
 
-Donec nec turpis felis. Nam quis commodo velit. Curabitur ullamcorper, quam ac consectetur scelerisque, lectus eros condimentum magna, ultrices placerat dolor ligula faucibus dui. Cras placerat rutrum nisl. Duis at risus lacinia turpis porta facilisis. Sed tristique quam leo. Nunc nec magna nisl. Integer porta scelerisque elementum.
+2020-2021
+:   **MSc, Mechatronics Engineering**; University of Málaga
+
+    *Thesis title: 5G sensor integration with ROS for emergency first response missions.*
+
+2016-2020
+:   **BSc, Electronics, Robotics and Mechatronics Engineering**; University of Málaga
+
+    *Thesis title: Autonomous driving in intersections and roundabouts with a 1/10 scale car using ROS and Gazebo.*
+
+Experience
+----------
+
+Though I do not have professional experience in the private sector yet, **I have worked closely with the ISA research group at the [Robotics and Mechatronics Lab](https://www.uma.es/robotics-and-mechatronics/?set_language=en) in the development of my Master's thesis, which concluded with the submission of a paper to ICRA 2022 (currently under review).**
+
+Other notable mentions are
+:   **Research Engineer at the UMA Garage Autonomous Driving Team** (feb 2021 - now)
+
+    *In charge of the planning and navigation algorithms, as well as the development of a traffic sign and lights detectiony system using Machine Learning techniques.*
+
+:   **Electronics Lab Monitor for the Electronics Department at University of Málaga** (oct 2017 - feb 2018)
+
+    **
+
+
+Skills
+--------------------
+
+Programming Languages
+:   **C++** Here, we have an itemization, where we only want
+    to add descriptions to the first few items, but still want to
+    mention some others together at the end. A format that works well
+    here is a description list where the first few items have their
+    first word emphasized, and the last item contains the final few
+    emphasized terms. Notice the reasonably nice page break in the pdf
+    version, which wouldn't happen if we generated the pdf via html.
+
+:   **Python:** Description of your experience with second-lang,
+    perhaps again including a [link] [ref], this time placing the url
+    reference elsewhere in the document to reduce clutter (see source
+    file). 
+
+:   **obscure-but-impressive-lang:** We both know this one's pushing
+    it.
+
+:   Basic knowledge of **C**, **x86 assembly**, **forth**, **Common Lisp**
+
+[ref]: https://github.com/githubuser/superlongprojectname
+
+Certifications and courses
+----------------------------------------
+
+Languages:
+:   **B2 First**, 2015 (Cambridge Assessment English)
+:   **B1 Preliminary**, 2014 (Cambridge Assesment English)
+
+NVIDIA/Deep Learning Institute:
+
+
+Other sort of impressive-sounding thing you did
