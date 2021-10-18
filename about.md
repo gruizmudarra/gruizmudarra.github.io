@@ -13,4 +13,5 @@ After graduating, I have studied the M.Sc. in Mechatronics Engineering, focusing
 
 I'm also part of the UMA Garage Autonomous Driving Team where we develop software for a 1/10 scaled car that needs to drive autonomously. The final system will be presented and evaluated in the Autonomous Driving Challenge organized by CARNET, Seat and the Volkswagen Research Group later in 2021 in Barcelona.
 
+{:.links}
 I am currently open to job offers, so if you are interested feel free to contact me via [email](mailto:germanruizmudarra@gmail.com) or [Linkedin](https://linkedin.com/in/gruizmudarra) :smiley:

@@ -1,6 +1,7 @@
 @import 'normalize';
 @import 'syntax';
 @import 'variables';
+@import 'media';
 
 *, *::after, *::before {
   box-sizing: border-box;
@@ -11,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: $body-color;
   background-color: #fbfbfb;
   margin: 0;
@@ -113,10 +114,6 @@ table tfoot td {
   position: relative;
 }
 
-.post, .article-page {
-  background-color: #fff;
-}
-
 ::-moz-selection {
   background: rgba(38, 57, 89, 0.8);
   color: $white;
@@ -136,14 +133,14 @@ table tfoot td {
   clear: both;
 }
 
-/* - - - - - - - - - - Home Page Styles - - - - - - - - - - */
-@import 'parts/home-page';
+@import 'parts/side-bar';
 
-/* - - - - - - - - - - Post Page Styles - - - - - - - - - - */
-@import 'parts/post-page';
+@import 'parts/page';
 
-/* - - - - - - - - - - Tag Styles - - - - - - - - - - */
+@import 'parts/posts';
+
+@import 'parts/post';
+
 @import 'parts/tag';
 
-/* - - - - - - - - - - Media Styles - - - - - - - - - - */
-@import 'media';
+
