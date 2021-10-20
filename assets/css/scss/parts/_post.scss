@@ -69,9 +69,6 @@
       &:first-child {
         margin-left: 0;
       }
-      &:hover {
-        background-color: $gray;
-      }
     }
   }
   .page-tag {
@@ -83,9 +80,6 @@
       color: $dark-blue;
       text-transform: uppercase;
       border: 1px solid $dark-blue;
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
 }
