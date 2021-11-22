@@ -1,33 +1,42 @@
 ---
 layout: default
 ---
-<article class="article-page">
-  <div class="page-content">
-    {% if page.img %}
-    <div class="page-cover-image">
-      <figure>
-        <img class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
-        {% if page.fig-caption %}
+<div class="post-title">
+  <h1 class="main-reveal-text-short">{{page.title}}</h1>
+</div>
+
+<div class="main-fade-in-animation">
+  <article class="article-post">
+    <div class="post-wrap">
+      {% if page.img %}
+      <!--div class="post-cover-image">
+        <figure>
+          <img class="post-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}}
+            alt="{{page.title}}">
+          {% if page.fig-caption %}
           <figcaption>{{page.fig-caption}}</figcaption>
-        {% endif %}
-      </figure>
-    </div> <!-- End Page Cover Image -->
-    {% else %}
-    {% endif %}
-    <div class="wrap-content">
-      <header class="header-page">
-        <h1 class="page-title">{{page.title}}</h1>
-        <div class="page-tag">
-          {% for tag in page.tags %}
+          {% endif %}
+        </figure>
+      </div> <!-- End Page Cover Image -->
+      {% else %}
+      {% endif %}
+      <div class="wrap-content">
+        <header class="header-post">
+          
+          <div class="post-tag">
+            {% for tag in page.tags %}
             <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
-          {% endfor %}
+            {% endfor %}
+          </div>
+          <!--div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div-->
+        </header>
+        <div class="post-content">
+          {{content | markdownify}}
         </div>
-        <!--div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div-->
-      </header>
-      {{content | markdownify}}
-      <div class="page-footer">
-        
-      </div>
-    </div> <!-- End Wrap Content -->
-  </div> <!-- End Page Content -->
-</article> <!-- End Article Page -->
+        <div class="post-footer">
+
+        </div>
+      </div> <!-- End Wrap Content -->
+    </div> <!-- End Page Content -->
+  </article> <!-- End Article Page -->
+</div>

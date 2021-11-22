@@ -4,8 +4,8 @@ title: Resumé
 permalink: /resume/
 ---
 
-## Education
-
+<h2 class="main-fade-in-animation"> Education </h2>
+<div class="main-fade-in-animation-delay-1" markdown="1">
 **M. Sc. in Mechatronics Engineering**
 
 University of Málaga (Oct. 2020 ‑ Jul. 2021)
@@ -24,12 +24,15 @@ University of Málaga (Oct. 2020 ‑ Jul. 2021)
 University of Málaga (Oct. 2016 ‑ Sep. 2020)
 - Mention: Robotics and automation.
 - *Thesis: Autonomous driving in intersections and roundabouts of a 1/10 scale car with ROS and Gazebo.*
+</div>
 
-## Extracurricular Activity
+<h2 class="main-fade-in-animation-delay-2"> Extracurricular Activity </h2>
 
-**Research Engineer**
+<div class="main-fade-in-animation-delay-3" markdown="1">
 
-*UMA Garage Autonomous Driving Team (Feb. 2021 ‑ now)*
+**Autonomous Driving Challenge**
+
+*UMA Garage Autonomous Driving Team (Feb. 2021 ‑ Nov. 2021)*
 
 - Proposed a system to perform parking and road navigation based on a state‑machine.
 - Created a traffic sign detection system using Machine Learning and computer vision.
@@ -40,9 +43,9 @@ University of Málaga (Oct. 2016 ‑ Sep. 2020)
 
 - Supervise lab material
 - Give advise to other students
+</div>
 
 ## Skills
-
 **Software**    
 :   MATLAB/Simulink, LabVIEW, ROS, OpenCV, Git.
 
@@ -55,7 +58,7 @@ University of Málaga (Oct. 2016 ‑ Sep. 2020)
 **Languages**   
 :   English, Spanish.
 
-## Courses & Achievements
+<h2 class="main-fade-in-animation"> Courses & Achievements </h2>
 
 2021 
 :   **Paper submitted to ICRA 2022 (currently under review)**: *Enabling ROS for Android in a distributedcommunication system for its use in an emergency response robotic application.*

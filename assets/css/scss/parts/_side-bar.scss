@@ -9,7 +9,7 @@
     width: 240px;
     height: 100%;
     padding: 20px 10px;
-    background-color: $side-bar-background;
+    background-color: $color-nav-background;
 }
 
 .about {
@@ -26,14 +26,10 @@
         margin: 0 0 10px;
         position: relative;
         padding-bottom: 15px;
-        font-size: 16px;
         text-transform: uppercase;
-        color: $side-bar-text;
     }
     p {
-        font-size: 16px;
         margin: 0 0 10px;
-        color: $side-bar-text;
     }
 }
 
@@ -44,7 +40,7 @@
     .sidebar-nav-item {
         display: block;
         line-height: 1.75;
-        color: $side-bar-text;
+        color: $color-text;
         text-decoration: none;
         padding: 5px;
         will-change: transform;
@@ -61,12 +57,13 @@ footer {
     .contact {
         .contact-title {
             position: relative;
-            color: $side-bar-text;
             font-weight: 400;
             font-size: 12px;
             margin: 0 0 5px;
             text-transform: uppercase;
             text-align: center;
+            color: $color-text;
+
         }
         ul {
             margin: 0;
@@ -80,7 +77,6 @@ footer {
                     margin-left: 0;
                 }
                 a{
-                    color: $side-bar-text;
                     display: block;
                     padding: 5px;
                     font-size: 18px;
@@ -92,8 +88,8 @@ footer {
         font-size: 14px;
         text-align: center;
         margin: 0;
-        color:$side-bar-text;
-        text-decoration-color: $side-bar-text;
+        color:$color-text;
+        text-decoration-color: $color-text;
         text-decoration: none;
     }
 }

@@ -1,4 +1,4 @@
-@import 'normalize';
+//@import 'normalize';
 @import 'syntax';
 @import 'variables';
 @import 'media';
@@ -7,21 +7,108 @@
   box-sizing: border-box;
 }
 
-html {
-  line-height: 1.5;
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans';
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  color: $body-color;
-  background-color: #fbfbfb;
+  background-color: $color-background;
+  color: $color-text;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  text-size-adjust: 100%;
   margin: 0;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
-  font-weight: 400;
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+h1, h2, h4, h5,
+.h1, .h2, .h4, .h5,
+.main-color-title {
+    color: $color-title;
+    font-weight: bold;
+}
+
+h3, .h3 {
+  color: $color-title;
+}
+
+.main-surface {
+  background-color: $color-surface;
+}
+
+.main-color-surface {
+  background-color: $color-surface
+}
+
+a {
+  color: $color-primary !important;
+  transition: none!important;
+}
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:active { text-decoration: none; }
+
+.main-btn-primary {
+  background-color: $color-primary;
+  border-color: $color-primary;
+  color: $color-title-inverse;
+}
+.main-social-svg {
+  fill: $color-primary;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+@media (hover: hover) {
+  a:hover {
+      color: $color-secondary !important;
+      text-decoration: none;
+  }
+  .main-btn-primary:hover {
+      background-color: $color-secondary;
+      border-color: $color-secondary;
+      color: $color-title-inverse;
+  }
+  .main-social-svg:hover {
+      fill: $color-secondary;
+  }
+}
+@media (hover: none) {
+  a:active {
+      color: $color-secondary !important;
+      text-decoration: none;
+  }
+  .main-btn-primary:active {
+      background-color: $color-secondary;
+      border-color: $color-secondary;
+      color: $color-title-inverse;
+  }
+  .main-social-svg:active {
+      fill: $color-secondary;
+  }
+  .main-icon-shadow:active {
+      color: transparent;
+      text-shadow: 0 0 $color-secondary;
+  }
 }
 
 img {
@@ -116,12 +203,12 @@ table tfoot td {
 
 ::-moz-selection {
   background: rgba(38, 57, 89, 0.8);
-  color: $white;
+  color: $color-text;
 }
 
 ::selection {
   background: rgba(38, 57, 89, 0.8);
-  color: $white;
+  color: $color-text;
 }
 
 .clearfix::before, .clearfix::after {
@@ -151,6 +238,8 @@ table tfoot td {
 
 @import 'parts/post';
 
-@import 'parts/tag';
+@import 'parts/animations';
+
+//@import 'parts/tag';
 
 

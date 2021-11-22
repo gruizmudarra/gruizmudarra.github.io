@@ -1,45 +1,55 @@
-.post {
+.projects-title {
+  padding-left: 20px;
+  text-align: center;
+}
+
+.projects-content {
+  padding-top: 20px;
+  padding-left: 20px;
   width: 100%;
   max-width: 100%;
-  margin-bottom: 1.5rem;
-  display: flex;
   flex-direction: row;
+  .project {
+  display: flex;
   align-items: stretch;
+  margin-bottom: 1.5rem;
   min-height: 11rem;
   overflow: hidden;
-
-  .post-thumbnail {
-    width: 30%;
-    max-width: 100%;
-    min-height: 11rem;
-    background-size: cover;
-    background-position: 50% 50%;
-  }
-
-  .post-content {
-    padding: 1rem;
-    width: 70%;
-    .post-date,
-    .post-words {
-      font-size: 12px;
+    
+    .project-thumbnail {
+      width: 30%;
+      max-width: 100%;
+      min-height: 11rem;
+      background-size: cover;
+      background-position: 50% 50%;
     }
-    .post-title {
-      margin: 0 0 10px;
-      font-size: 30px;
-      font-weight: 400;
-      a {
-        text-decoration: none;
-        color: $dark-blue;
+  
+    .project-content {
+      padding: 1rem;
+      width: 70%;
+      .project-date,
+      .project-words {
+        font-size: 12px;
       }
-    }
-    p {
-      margin-top: 0;
+      .project-title {
+        margin: 0 0 10px;
+        font-size: 30px;
+        font-weight: 400;
+        a {
+          text-decoration: none;
+          color: $color-text
+        }
+      }
+      p {
+        margin-top: 0;
+      }
     }
   }
 }
 
-a.older-posts, a.newer-posts {
+
+a.older-projects, a.newer-projects {
   font-size: 18px;
   display: inline-block;
-  color: $body-color;
+  color: $color-text
 }
