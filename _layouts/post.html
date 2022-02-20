@@ -4,39 +4,32 @@ layout: default
 <div class="post-title">
   <h1 class="main-reveal-text-short">{{page.title}}</h1>
 </div>
-
+<article class="post-self">
+{% if page.img %}
 <div class="main-fade-in-animation">
-  <article class="article-post">
-    <div class="post-wrap">
-      {% if page.img %}
-      <!--div class="post-cover-image">
-        <figure>
-          <img class="post-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}}
-            alt="{{page.title}}">
-          {% if page.fig-caption %}
-          <figcaption>{{page.fig-caption}}</figcaption>
-          {% endif %}
-        </figure>
-      </div> <!-- End Page Cover Image -->
-      {% else %}
+  <div class="post-cover-image">
+    <figure>
+      <img class="post-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
+      {% if page.fig-caption %}
+      <figcaption>{{page.fig-caption}}</figcaption>
       {% endif %}
-      <div class="wrap-content">
-        <header class="header-post">
-          
-          <div class="post-tag">
-            {% for tag in page.tags %}
-            <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
-            {% endfor %}
-          </div>
-          <!--div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div-->
-        </header>
-        <div class="post-content">
-          {{content | markdownify}}
-        </div>
-        <div class="post-footer">
-
-        </div>
-      </div> <!-- End Wrap Content -->
-    </div> <!-- End Page Content -->
-  </article> <!-- End Article Page -->
+    </figure>
+  </div>
 </div>
+{% else %}
+{% endif %}
+
+<div class="main-fade-in-animation-delay-1">
+  <header class="header-post">
+    <div class="post-tag">
+      {% for tag in page.tags %}
+      <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
+      {% endfor %}
+    </div>
+    <div class="post-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+  </header>
+  <div class="post-content">
+    {{content | markdownify}}
+  </div>
+</div> <!-- End Wrap Content -->
+</article>
