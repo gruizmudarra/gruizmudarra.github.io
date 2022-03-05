@@ -1,19 +1,30 @@
 ---
 layout: page
-title: About me
-permalink: /about/
+title: About
 ---
-<h3 class="main-fade-in-animation"> Hi, I'm Germán and this is my personal portfolio :wave:</h3>
 
-<div class="main-fade-in-animation-delay-1" markdown="1">
-I am an Electronics, Robotics and Mechatronics Engineer, specialized in robotics and automation. 
+<p class="message">
+  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
+</p>
 
-I have always had great interest in the advances of the engineering and tech industries. That's the reason why I decided to study this degree in the University of Málaga: I wanted to be capable of understand the various disciplines related to the most cutting edge innovations.
+In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
 
-After graduating, I have studied the M.Sc. in Mechatronics Engineering, focusing the optional courses to extend my knowledge in robotics, computer vision, AI and electronics.
+There are currently two themes built on Poole:
 
-I'm also part of the UMA Garage Autonomous Driving Team where we develop software for a 1/10 scaled car that needs to drive autonomously. The final system will be presented and evaluated in the Autonomous Driving Challenge organized by CARNET, Seat and the Volkswagen Research Group later in 2021 in Barcelona.
+* [Hyde](http://hyde.getpoole.com)
+* [Lanyon](http://lanyon.getpoole.com)
 
-I am currently open to job offers, so if you are interested feel free to contact me via [email](mailto:germanruizmudarra@gmail.com) or [Linkedin](https://linkedin.com/in/gruizmudarra) :smiley:
+Learn more and contribute on [GitHub](https://github.com/poole).
 
-</div>
+## Setup
+
+Some fun facts about the setup of this project include:
+
+* Built for [Jekyll](http://jekyllrb.com)
+* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
+* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
+* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
+
+Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
+
+Thanks for reading!
