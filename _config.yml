@@ -15,7 +15,7 @@ title:            Germán Ruiz Mudarra
 tagline:          'My Portfolio'
 description:      'Robotics and Mechatronics Engineer.'
 url:              http://gruizmudarra.github.io
-baseurl:          '/'
+baseurl:          /
 
 author:
   name:           'Germán Ruiz Mudarra'
