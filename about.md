@@ -4,27 +4,17 @@ title: About
 ---
 
 <p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
+  Hey there! I'm Germán and this is my website! :wave:
 </p>
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+I'm a Mechatronics Engineer specialized in Robotics and Automation. Here's some background about me:
 
-There are currently two themes built on Poole:
+I have always had great interest in the advances of the engineering and tech industries. That's the reason why I decided to study the B. Sc. in Electronics, Robotics and Mechatronics Engineering at UMA (Málaga): I wanted to be capable of understand the various disciplines related to the most cutting edge innovations.
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+After graduating, I have studied the M.Sc. in Mechatronics Engineering, also at UMA, focusing the optional courses to extend my knowledge in robotics, computer vision, AI and electronics.
 
-Learn more and contribute on [GitHub](https://github.com/poole).
+I dedicated my last two years in college being a member of the UMA Garage Autonomous Driving Team. I developed software for a 1/10 scaled car that needed to drive autonomously. The final system was presented and evaluated in the Autonomous Driving Challenge 2021 organized by CARNET, Seat and the Volkswagen Research Group in Barcelona.
 
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
+I am currently open to job offers, so if you are interested feel free to contact me via <a class="body-link" href="mailto:germanruizmudarra@gmail.com">email</a> or <a class="body-link" href="https://linkedin.com/in/gruizmudarra">LinkedIn</a>
 
 Thanks for reading!

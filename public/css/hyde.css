@@ -271,3 +271,7 @@ html {
 .theme-base-0g {
   background-color: var(--color-background);
 }
+
+.body-link {
+  color:var(--color-primary)
+}
