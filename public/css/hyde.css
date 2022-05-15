@@ -263,7 +263,7 @@ html {
   background-color: var(--color-background);
 }
 
-.theme-base-0g .content a,
+.theme-base-0g,
 .theme-base-0g .related-posts li a:hover {
   color: var(--color-links);
 }
@@ -273,5 +273,5 @@ html {
 }
 
 .body-link {
-  color:var(--color-primary)
+  color:var(--color-links)
 }

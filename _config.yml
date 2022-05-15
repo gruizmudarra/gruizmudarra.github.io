@@ -9,6 +9,7 @@ permalink:        pretty
 plugins:
   - jekyll-paginate
   - jekyll-gist
+  - jemoji
 
 # Setup
 title:            Germán Ruiz Mudarra
