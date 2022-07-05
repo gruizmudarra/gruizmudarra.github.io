@@ -32,21 +32,22 @@
  */
 
 :root {
-  --color-background: #1B262C; /* Dark liver */
+  --color-background: #121420; /* Dark liver */
   --color-background-inverse: #f8f9fa;
-  --color-nav-background: #1B262C;
+  --color-nav-background: #121420;
   --color-surface: #0F4C75;
-  --color-text: rgba(238, 238, 238, 1.0);
-  --color-title: #BBE1FA;
+  --color-text: #F5F9E9;
+  --color-title: #EC4E20;
   --color-title-inverse: #000000;
-  --color-primary: #3282B8;
-  --color-secondary: #0F4C75;
-  --color-links: #fafafa;
+  --color-primary: #F5F9E9;
+  --color-secondary: #C2C1A5;
+  --color-links: #F5F9E9;
 }
 
 html {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: 'Inconsolata', monospace;
 }
+
 @media (min-width: 48em) {
   html {
     font-size: 16px;
@@ -90,7 +91,7 @@ html {
 /* About section */
 .sidebar-about h1 {
   margin-top: 0;
-  font-family: "Arial";
+  font-family: 'Inconsolata', monospace;
   font-size: 2rem;
 }
 
