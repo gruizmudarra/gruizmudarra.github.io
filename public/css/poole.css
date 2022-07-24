@@ -302,13 +302,31 @@ tbody tr:nth-child(odd) th {
  * or to a parent if there are multiple elements to show.
  */
 
-.message {
+.message-container {
   margin-bottom: 1rem;
-  padding: 1rem;
-  color: #717171;
+  padding: 1%;
+  overflow: auto;
+  display: flex;
+}
+.message-image {
+  float: left;
+  margin-right: 1%;
+}
+.message-image img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.message-text {
+  margin-left: 1%;
   background-color: #f9f9f9;
 }
 
+.message-text p{
+  color: #717171;
+  padding: 1%;
+}
 
 /*
  * Container

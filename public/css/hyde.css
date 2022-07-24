@@ -276,3 +276,8 @@ html {
 .body-link {
   color:var(--color-links)
 }
+
+.about-text {
+  text-align: justify;
+  text-justify: inter-word;
+}
