@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+	size?: number;
+}
+
+const { size = 32 } = Astro.props;
+---
+
+<div class="flex flex-row items-center justify-center gap-6 p-4">
+	<a href="https://fosstodon.org/@gruizmudarra" target="_blank">
+		<Icon name="mdi:mastodon" width={size} height={size} />
+	</a>
+	<a href="https://linkedin.com/in/gruizmudarra" target="_blank">
+		<Icon name="mdi:linkedin" width={size} height={size} />
+	</a>
+	<a href="https://github.com/grmnlabs" target="_blank">
+		<Icon name="mdi:github" width={size} height={size} />
+	</a>
+</div>
+
+<style>
+	a {
+		display: flex;
+		text-decoration: none;
+		color: inherit;
+	}
+	a:hover {
+		opacity: 0.8;
+	}
+</style>

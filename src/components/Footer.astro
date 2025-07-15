@@ -1,21 +1,11 @@
 ---
 const today = new Date();
-import { Icon } from "astro-icon/components";
+import SocialLinks from "./SocialLinks.astro";
 ---
 
 <footer>
 	&copy; {today.getFullYear()} Germán Ruiz. Todos los derechos reservados.
-	<div class="social-links">
-		<a href="https://fosstodon.org/@gruizmudarra" target="_blank">
-			<Icon name="mdi:mastodon" width={32} height={32} />
-		</a>
-		<a href="https://linkedin.com/in/gruizmudarra" target="_blank">
-			<Icon name="mdi:linkedin" width={32} height={32} />
-		</a>
-		<a href="https://github.com/grmnlabs" target="_blank">
-			<Icon name="mdi:github" width={32} height={32} />
-		</a>
-	</div>
+	<SocialLinks />
 </footer>
 <style>
 	footer {
@@ -23,18 +13,5 @@ import { Icon } from "astro-icon/components";
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
 	}
 </style>

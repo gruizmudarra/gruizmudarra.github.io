@@ -1,7 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
-import { Icon } from "astro-icon/components";
 ---
 
 <header>
@@ -10,18 +9,6 @@ import { Icon } from "astro-icon/components";
 		<div class="internal-links">
 			<HeaderLink href="/">Inicio</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">Sobre mí</HeaderLink>
-		</div>
-		<div class="social-links">
-			<a href="https://fosstodon.org/@gruizmudarra" target="_blank">
-				<Icon name="mdi:mastodon" width={32} height={32} />
-			</a>
-			<a href="https://linkedin.com/in/gruizmudarra" target="_blank">
-				<Icon name="mdi:linkedin" width={32} height={32} />
-			</a>
-			<a href="https://github.com/grmnlabs" target="_blank">
-				<Icon name="mdi:github" width={32} height={32} />
-			</a>
 		</div>
 	</nav>
 </header>
@@ -55,14 +42,5 @@ import { Icon } from "astro-icon/components";
 	nav a.active {
 		text-decoration: none;
 		border-bottom-color: var(--accent-secondary);
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
 	}
 </style>
