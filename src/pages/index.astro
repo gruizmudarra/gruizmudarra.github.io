@@ -4,23 +4,26 @@ import AboutHeroImage from "../assets/about_me.webp";
 ---
 
 <BaseLayout>
-	<section class="home">
-		<div class="hero-image">
+	<section class="px-4 py-8 max-w-[80ch] mx-auto">
+		<div class="w-full mb-8">
 			<img src={AboutHeroImage.src} alt="About me" />
 		</div>
-		<div class="content">
+		<div class="max-w-[65ch] mx-auto leading-relaxed">
 			<p>
 				<strong>Ingeniero en Mecatrónica</strong> especializado en <em
-					>robótica</em
-				>, <em>visión por computador</em> e <em>IoT industrial</em>.
-				Experiencia en el diseño de <strong>sistemas completos</strong> -
-				desde electrónica personalizada hasta conectividad en la nube - con
-				dominio de <code>C</code> y <code>Rust</code> para sistemas embebidos,
-				y <code>Python</code> para análisis de datos y prototipado rápido.
+					class="italic">robótica</em
+				>, <em class="italic">visión por computador</em> e <em
+					class="italic">IoT industrial</em
+				>. Experiencia en el diseño de <strong
+					>sistemas completos</strong
+				> - desde electrónica personalizada hasta conectividad en la nube
+				- con dominio de <code>C</code> y <code>Rust</code> para sistemas
+				embebidos, y <code>Python</code> para análisis de datos y prototipado
+				rápido.
 				<strong
 					>Apasionado por conectar la investigación de vanguardia con
 					soluciones de ingeniería prácticas</strong
-				>, creando sistemas fiables que generan un <em
+				>, creando sistemas fiables que generan un <em class="italic"
 					>impacto medible</em
 				> y que mejoren la vida de las personas, mientras exploro continuamente
 				tecnologías emergentes en <strong>robótica</strong>, <strong
@@ -31,47 +34,3 @@ import AboutHeroImage from "../assets/about_me.webp";
 		</div>
 	</section>
 </BaseLayout>
-
-<style>
-	.home {
-		padding: 2rem 1rem;
-		max-width: 80ch;
-		margin: 0 auto;
-	}
-
-	.hero-image {
-		width: 100%;
-		margin-bottom: 2rem;
-	}
-
-	.hero-image img {
-		width: 100%;
-		height: auto;
-		border-radius: 8px;
-	}
-
-	.content {
-		max-width: 65ch;
-		margin: 0 auto;
-		line-height: 1.6;
-	}
-
-	.content p {
-		margin-bottom: 1rem;
-	}
-
-	.content strong {
-		font-weight: 600;
-	}
-
-	.content em {
-		font-style: italic;
-	}
-
-	.content code {
-		background-color: #f4f4f4;
-		padding: 0.2rem 0.4rem;
-		border-radius: 3px;
-		font-size: 0.9em;
-	}
-</style>
