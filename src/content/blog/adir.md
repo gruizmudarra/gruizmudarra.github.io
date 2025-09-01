@@ -1,6 +1,6 @@
 ---
-title: 'Cómo hice que un coche autónomo tomara decisiones en cruces y rotondas'
-description: 'Post sobre mi Trabajo Fin de Grado'
+title: 'Mi TFG: ADIR'
+description: 'Cómo hice que un coche autónomo tomara decisiones en cruces y rotondas.'
 pubDate: 'Sep 01 2020'
 heroImage: '../../assets/blog-placeholder-3.jpg'
 pinned: true
