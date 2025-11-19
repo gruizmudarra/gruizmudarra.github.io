@@ -1,350 +1,357 @@
 ---
 import { getCollection } from "astro:content";
-import FormattedDate from "./FormattedDate.astro";
+import { Image } from "astro:assets";
+import { randomUUID } from "node:crypto";
 
 // Get all pinned blog posts
 const pinnedPosts = await getCollection("blog", ({ data }) => {
-	return data.pinned === true;
+    return data.pinned === true;
 });
 
 // Sort by publication date (newest first)
 pinnedPosts.sort(
-	(a, b) =>
-		new Date(b.data.pubDate || 0).valueOf() -
-		new Date(a.data.pubDate || 0).valueOf(),
+    (a, b) =>
+        new Date(b.data.pubDate || 0).valueOf() -
+        new Date(a.data.pubDate || 0).valueOf(),
 );
+
+const slidesPerViewLg = 3;
+const carouselId = `posts-carousel-${randomUUID()}`;
+const headingId = `${carouselId}-heading`;
+const trackId = `${carouselId}-track`;
 ---
 
 <section class="mb-12">
-	<h2 class="text-3xl font-bold mb-6 text-center">Posts Destacados</h2>
+    <h2
+        id={headingId}
+        class="mb-6 text-center font-extrabold md:mb-12"
+        data-carousel-heading
+    >
+        Posts Destacados
+    </h2>
 
-	{
-		pinnedPosts.length > 0 ? (
-			<div class="relative">
-				<div class="carousel-container overflow-hidden">
-					<div
-						class="carousel-track flex transition-transform duration-300 ease-in-out"
-						id="carousel-track"
-					>
-						{pinnedPosts.map((post, index) => (
-							<div class="carousel-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
-								<article class="bg-white rounded-lg shadow-lg overflow-hidden h-full border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-									{post.data.heroImage && (
-										<div class="aspect-video overflow-hidden">
-											<img
-												src={post.data.heroImage.src}
-												alt={post.data.title}
-												class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-											/>
-										</div>
-									)}
-									<div class="p-6">
-										<div class="flex items-center justify-between mb-3">
-											{post.data.pubDate && (
-												<FormattedDate
-													date={post.data.pubDate}
-												/>
-											)}
-										</div>
-										<h3 class="text-xl font-bold mb-3 text-gray-900 hover:text-blue-600 transition-colors">
-											<a
-												href={`/blog/${post.id}/`}
-												class="no-underline"
-											>
-												{post.data.title}
-											</a>
-										</h3>
-										<p class="text-gray-600 text-base leading-relaxed mb-4">
-											{post.data.description}
-										</p>
-										<a
-											href={`/blog/${post.id}/`}
-											class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
-										>
-											Leer más
-											<svg
-												class="w-4 h-4 ml-1"
-												fill="none"
-												stroke="currentColor"
-												viewBox="0 0 24 24"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
-													d="M9 5l7 7-7 7"
-												/>
-											</svg>
-										</a>
-									</div>
-								</article>
-							</div>
-						))}
-					</div>
-				</div>
+    {
+        pinnedPosts.length > 0 ? (
+            <div
+                class="relative"
+                role="region"
+                aria-labelledby={headingId}
+                data-carousel
+                data-carousel-id={carouselId}
+            >
+                <div class="carousel-container overflow-hidden pt-8">
+                    <div
+                        class="carousel-track flex transition-transform duration-300 ease-in-out"
+                        id={trackId}
+                        data-carousel-track
+                        aria-live="polite"
+                    >
+                        {pinnedPosts.map((post) => (
+                            <div class="carousel-slide w-full flex-shrink-0 px-4 md:w-1/2 lg:w-1/3">
+                                <a
+                                    href={`/blog/${post.id}/`}
+                                    class="group flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                    aria-label={`Leer más sobre ${post.data.title}`}
+                                >
+                                    <article class="flex h-full flex-col">
+                                        {post.data.heroImage && (
+                                            <div class="aspect-video overflow-hidden rounded-none">
+                                                <Image
+                                                    src={post.data.heroImage}
+                                                    alt={post.data.title}
+                                                    width={800}
+                                                    height={450}
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    class="h-full w-full rounded-none object-cover transition-transform duration-300 group-hover:scale-105"
+                                                />
+                                            </div>
+                                        )}
+                                        <div class="flex flex-grow flex-col p-4 text-left">
+                                            <h3 class="title-clamp mb-2 font-bold text-gray-900">
+                                                {post.data.title}
+                                            </h3>
+                                            <p class="description-clamp mb-2 flex-grow text-base leading-relaxed text-gray-600">
+                                                {post.data.description}
+                                            </p>
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                </div>
 
-				{pinnedPosts.length > 3 && (
-					<div class="flex justify-center mt-6 space-x-2">
-						<button
-							id="prev-btn"
-							class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-							aria-label="Anterior"
-						>
-							<svg
-								class="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M15 19l-7-7 7-7"
-								/>
-							</svg>
-						</button>
-						<button
-							id="next-btn"
-							class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-							aria-label="Siguiente"
-						>
-							<svg
-								class="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 5l7 7-7 7"
-								/>
-							</svg>
-						</button>
-					</div>
-				)}
-
-				{pinnedPosts.length > 3 && (
-					<div
-						class="flex justify-center mt-4 space-x-2"
-						id="dots-container"
-					>
-						{Array.from({
-							length: Math.ceil(pinnedPosts.length / 3),
-						}).map((_, index) => (
-							<button
-								class="dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors"
-								data-slide={index}
-								aria-label={`Ir a página ${index + 1}`}
-							/>
-						))}
-					</div>
-				)}
-			</div>
-		) : (
-			<div class="text-center text-gray-500 py-12">
-				<p class="text-lg">No hay posts destacados disponibles.</p>
-			</div>
-		)
-	}
+                {pinnedPosts.length > slidesPerViewLg && (
+                    <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
+                        <button
+                            type="button"
+                            class="rounded-full bg-gray-100 p-3 text-gray-700 shadow transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            aria-label="Anterior"
+                            aria-controls={trackId}
+                            data-carousel-prev
+                        >
+                            <svg
+                                class="h-5 w-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 19l-7-7 7-7"
+                                />
+                            </svg>
+                        </button>
+                        <button
+                            type="button"
+                            class="rounded-full bg-gray-100 p-3 text-gray-700 shadow transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            aria-label="Siguiente"
+                            aria-controls={trackId}
+                            data-carousel-next
+                        >
+                            <svg
+                                class="h-5 w-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 5l7 7-7 7"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                )}
+            </div>
+        ) : (
+            <div class="py-12 text-center text-gray-500">
+                <p class="text-lg">No hay posts destacados disponibles.</p>
+            </div>
+        )
+    }
 </section>
 
-<script>
-	document.addEventListener("DOMContentLoaded", function () {
-		const track = document.getElementById("carousel-track");
-		const prevBtn = document.getElementById("prev-btn");
-		const nextBtn = document.getElementById("next-btn");
-		const dotsContainer = document.getElementById("dots-container");
-
-		if (!track) return;
-
-		const slides = track.querySelectorAll(".carousel-slide");
-		const totalSlides = slides.length;
-
-		// Determine slides per view based on screen size
-		const getSlidesPerView = () => {
-			if (window.innerWidth >= 1024) return 3; // lg
-			if (window.innerWidth >= 768) return 2; // md
-			return 1; // sm
-		};
-
-		let currentSlide = 0;
-		let slidesPerView = getSlidesPerView();
-		let maxSlide = Math.max(0, totalSlides - slidesPerView);
-
-		const updateCarousel = () => {
-			const translateX = -(currentSlide * (100 / slidesPerView));
-			track.style.transform = `translateX(${translateX}%)`;
-
-			// Update navigation buttons
-			if (prevBtn)
-				(prevBtn as HTMLButtonElement).disabled = currentSlide === 0;
-			if (nextBtn)
-				(nextBtn as HTMLButtonElement).disabled =
-					currentSlide >= maxSlide;
-
-			// Update dots
-			if (dotsContainer) {
-				const dots = dotsContainer.querySelectorAll(".dot");
-				dots.forEach((dot, index) => {
-					const slideIndex = Math.floor(currentSlide / slidesPerView);
-					dot.classList.toggle("bg-blue-600", index === slideIndex);
-					dot.classList.toggle("bg-gray-300", index !== slideIndex);
-				});
-			}
-		};
-
-		const goToSlide = (slideIndex: number) => {
-			currentSlide = Math.max(0, Math.min(slideIndex, maxSlide));
-			updateCarousel();
-		};
-
-		// Navigation buttons
-		if (prevBtn) {
-			prevBtn.addEventListener("click", () => {
-				goToSlide(currentSlide - 1);
-			});
-		}
-
-		if (nextBtn) {
-			nextBtn.addEventListener("click", () => {
-				goToSlide(currentSlide + 1);
-			});
-		}
-
-		// Dots navigation
-		if (dotsContainer) {
-			dotsContainer.addEventListener("click", (e) => {
-				const dot = (e.target as HTMLElement)?.closest(
-					".dot",
-				) as HTMLElement;
-				if (dot) {
-					const slideIndex =
-						parseInt((dot as HTMLElement).dataset.slide || "0") *
-						slidesPerView;
-					goToSlide(slideIndex);
-				}
-			});
-		}
-
-		// Handle window resize
-		window.addEventListener("resize", () => {
-			const newSlidesPerView = getSlidesPerView();
-			if (newSlidesPerView !== slidesPerView) {
-				slidesPerView = newSlidesPerView;
-				maxSlide = Math.max(0, totalSlides - slidesPerView);
-				currentSlide = Math.min(currentSlide, maxSlide);
-				updateCarousel();
-			}
-		});
-
-		// Auto-play functionality (optional)
-		let autoPlayInterval: ReturnType<typeof setInterval> | undefined;
-		const startAutoPlay = () => {
-			autoPlayInterval = setInterval(() => {
-				if (currentSlide >= maxSlide) {
-					goToSlide(0);
-				} else {
-					goToSlide(currentSlide + 1);
-				}
-			}, 5000);
-		};
-
-		const stopAutoPlay = () => {
-			if (autoPlayInterval) clearInterval(autoPlayInterval);
-		};
-
-		// Start auto-play and pause on hover
-		if (totalSlides > slidesPerView) {
-			startAutoPlay();
-			track.addEventListener("mouseenter", stopAutoPlay);
-			track.addEventListener("mouseleave", startAutoPlay);
-		}
-
-		// Initialize
-		updateCarousel();
-
-		// Keyboard navigation
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "ArrowLeft") {
-				e.preventDefault();
-				goToSlide(currentSlide - 1);
-			} else if (e.key === "ArrowRight") {
-				e.preventDefault();
-				goToSlide(currentSlide + 1);
-			}
-		});
-
-		// Touch/swipe support
-		let startX = 0;
-		let isDragging = false;
-
-		track.addEventListener("touchstart", (e) => {
-			startX = e.touches[0].clientX;
-			isDragging = true;
-		});
-
-		track.addEventListener("touchmove", (e) => {
-			if (!isDragging) return;
-			e.preventDefault();
-		});
-
-		track.addEventListener("touchend", (e) => {
-			if (!isDragging) return;
-			isDragging = false;
-
-			const endX = e.changedTouches[0].clientX;
-			const diff = startX - endX;
-
-			if (Math.abs(diff) > 50) {
-				if (diff > 0) {
-					goToSlide(currentSlide + 1);
-				} else {
-					goToSlide(currentSlide - 1);
-				}
-			}
-		});
-	});
-</script>
-
 <style>
-	.carousel-container {
-		position: relative;
-	}
+    :global(h2[data-carousel-heading]) {
+        font-size: clamp(2.5rem, 4vw, 3.25rem);
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+    }
 
-	.carousel-track {
-		display: flex;
-		transition: transform 0.3s ease-in-out;
-	}
+    :global([data-carousel] h3.title-clamp) {
+        margin-top: 1rem;
+        font-size: 1.35rem;
+        line-height: 1.9rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 3.8rem; /* 2 lines */
+    }
 
-	.carousel-slide {
-		flex: 0 0 100%;
-	}
+    :global([data-carousel] img) {
+        border-radius: 0;
+    }
 
-	@media (min-width: 768px) {
-		.carousel-slide {
-			flex: 0 0 50%;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.carousel-slide {
-			flex: 0 0 33.333333%;
-		}
-	}
-
-	.dot {
-		cursor: pointer;
-		transition: background-color 0.3s ease;
-	}
-
-	.dot:hover {
-		background-color: #9ca3af;
-	}
-
-	.dot.active {
-		background-color: #2563eb;
-	}
+    :global([data-carousel] p.description-clamp) {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 </style>
+
+<script type="module">
+    (() => {
+        const carouselSelector = "[data-carousel]";
+        const readyAttr = "data-carousel-ready";
+
+        const getSlidesPerView = () => {
+            if (window.innerWidth >= 1024) return 3;
+            if (window.innerWidth >= 768) return 2;
+            return 1;
+        };
+
+        const initCarousel = (carousel) => {
+            const track = carousel.querySelector("[data-carousel-track]");
+            const prevBtn = carousel.querySelector("[data-carousel-prev]");
+            const nextBtn = carousel.querySelector("[data-carousel-next]");
+            const slides = track ? Array.from(track.children) : [];
+
+            if (!track || slides.length === 0) return;
+
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+            let autoPlayInterval;
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let isDragging = false;
+
+            const maxIndex = () =>
+                Math.max(0, totalSlides - getSlidesPerView());
+
+            const updateCarousel = () => {
+                const slideWidth =
+                    slides[0]?.getBoundingClientRect().width ?? 0;
+                currentIndex = Math.max(0, Math.min(currentIndex, maxIndex()));
+                if (slideWidth > 0) {
+                    track.style.transform = `translateX(-${
+                        currentIndex * slideWidth
+                    }px)`;
+                }
+            };
+
+            const goToSlide = (index) => {
+                const limit = maxIndex();
+                if (index > limit) {
+                    currentIndex = 0;
+                } else if (index < 0) {
+                    currentIndex = limit;
+                } else {
+                    currentIndex = index;
+                }
+                updateCarousel();
+            };
+
+            const shouldAutoPlay = () => totalSlides > getSlidesPerView();
+
+            const stopAutoPlay = () => {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = undefined;
+                }
+            };
+
+            const startAutoPlay = () => {
+                if (!shouldAutoPlay()) {
+                    stopAutoPlay();
+                    return;
+                }
+                stopAutoPlay();
+                autoPlayInterval = window.setInterval(() => {
+                    const limit = maxIndex();
+                    if (limit === 0) return;
+                    goToSlide(currentIndex >= limit ? 0 : currentIndex + 1);
+                }, 5000);
+            };
+
+            const handleManualNav = (nextIndex) => {
+                goToSlide(nextIndex);
+                startAutoPlay();
+            };
+
+            prevBtn?.addEventListener("click", () =>
+                handleManualNav(currentIndex - 1),
+            );
+            nextBtn?.addEventListener("click", () =>
+                handleManualNav(currentIndex + 1),
+            );
+
+            const handleKeydown = (event) => {
+                if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+                    event.preventDefault();
+                    if (event.key === "ArrowLeft") {
+                        goToSlide(currentIndex - 1);
+                    } else {
+                        goToSlide(currentIndex + 1);
+                    }
+                }
+            };
+
+            carousel.addEventListener("keydown", handleKeydown);
+            carousel.addEventListener("mouseenter", stopAutoPlay);
+            carousel.addEventListener("mouseleave", startAutoPlay);
+            carousel.addEventListener("focusin", stopAutoPlay);
+            carousel.addEventListener("focusout", startAutoPlay);
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    stopAutoPlay();
+                } else {
+                    startAutoPlay();
+                }
+            });
+
+            const handleTouchStart = (event) => {
+                const touch = event.touches[0];
+                touchStartX = touch.clientX;
+                touchStartY = touch.clientY;
+                isDragging = true;
+                stopAutoPlay();
+            };
+
+            const handleTouchMove = (event) => {
+                if (!isDragging) return;
+                const touch = event.touches[0];
+                const deltaX = Math.abs(touch.clientX - touchStartX);
+                const deltaY = Math.abs(touch.clientY - touchStartY);
+                const isHorizontal = deltaX > deltaY;
+                if (isHorizontal) {
+                    event.preventDefault();
+                } else {
+                    isDragging = false;
+                    startAutoPlay();
+                }
+            };
+
+            const handleTouchEnd = (event) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const endX = event.changedTouches[0].clientX;
+                const diff = touchStartX - endX;
+                if (Math.abs(diff) > 50) {
+                    goToSlide(currentIndex + Math.sign(diff));
+                }
+                startAutoPlay();
+            };
+
+            track.addEventListener("touchstart", handleTouchStart, {
+                passive: true,
+            });
+            track.addEventListener("touchmove", handleTouchMove, {
+                passive: false,
+            });
+            track.addEventListener("touchend", handleTouchEnd, {
+                passive: true,
+            });
+
+            window.addEventListener("resize", updateCarousel);
+            const resizeObserver = new ResizeObserver(() =>
+                requestAnimationFrame(() => {
+                    updateCarousel();
+                    startAutoPlay();
+                }),
+            );
+            resizeObserver.observe(track);
+
+            updateCarousel();
+            startAutoPlay();
+        };
+
+        const mountCarousels = () => {
+            document.querySelectorAll(carouselSelector).forEach((carousel) => {
+                if (carousel.hasAttribute(readyAttr)) return;
+                carousel.setAttribute(readyAttr, "true");
+                initCarousel(carousel);
+            });
+        };
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", mountCarousels, {
+                once: true,
+            });
+        } else {
+            mountCarousels();
+        }
+
+        document.addEventListener("astro:after-swap", mountCarousels);
+    })();
+</script>
