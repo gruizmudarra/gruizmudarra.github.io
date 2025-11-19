@@ -15,42 +15,44 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 ---
 
 <BaseLayout>
-    <section class="px-4 py-8 max-w-[80ch] mx-auto">
-        <ul class="flex flex-wrap gap-8 m-0 p-0 md:gap-2">
+    <section class="mx-auto max-w-[80ch] px-4 py-8">
+        <ul class="m-0 flex flex-wrap gap-8 p-0 md:gap-2">
             {
                 posts.map((post, index) => (
                     <li
-                        class={`${index === 0 ? "w-full mb-4 text-center" : "w-full md:w-[calc(50%-0.5rem)]"} text-center`}
+                        class={`${index === 0 ? "mb-4 w-full text-center" : "w-full text-center md:w-[calc(50%-0.5rem)]"}`}
                     >
                         <a
                             href={`/blog/${post.id}/`}
-                            class="block transition-all duration-200 ease-in-out group"
+                            class="group block transition-all duration-200 ease-in-out"
                         >
-                            {post.data.heroImage && (
-                                <Image
-                                    width={1024}
-                                    height={512}
-                                    src={post.data.heroImage}
-                                    alt=""
-                                    class="mb-2 rounded-xl group-hover:shadow-[0_2px_6px_rgba(96,115,159,0.25),0_8px_24px_rgba(96,115,159,0.33),0_16px_32px_rgba(96,115,159,0.33)] transition-all duration-200"
-                                />
-                            )}
+                            <div class="relative">
+                                {post.data.heroImage && (
+                                    <Image
+                                        width={1024}
+                                        height={512}
+                                        src={post.data.heroImage}
+                                        alt=""
+                                        class="mb-2 rounded-xl transition-all duration-200 group-hover:shadow-[0_2px_6px_rgba(96,115,159,0.25),0_8px_24px_rgba(96,115,159,0.33),0_16px_32px_rgba(96,115,159,0.33)]"
+                                    />
+                                )}
+                                {post.data.pinned && (
+                                    <span class="absolute right-4 top-4 rounded bg-blue-100 px-2.5 py-0.5 text-sm font-medium text-blue-800 shadow-lg">
+                                        Destacado
+                                    </span>
+                                )}
+                            </div>
                             {/* Using !important to override BaseLayout's global h4 color style */}
                             <h4
-                                class={`m-0 text-[var(--black)] leading-none group-hover:!text-[var(--accent)] transition-colors duration-200 ${index === 0 ? "text-4xl md:text-2xl" : ""}`}
+                                class={`m-0 leading-none text-[var(--black)] transition-colors duration-200 group-hover:!text-[var(--accent)] ${index === 0 ? "text-4xl md:text-2xl" : ""}`}
                             >
                                 {post.data.title}
                             </h4>
-                            <p class="m-0 text-[rgb(var(--gray))] group-hover:text-[var(--accent)] transition-colors duration-200">
+                            <p class="m-0 text-[rgb(var(--gray))] transition-colors duration-200 group-hover:text-[var(--accent)]">
                                 {post.data.pubDate && (
                                     <FormattedDate date={post.data.pubDate} />
                                 )}
                             </p>
-                            {post.data.pinned == true && (
-                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">
-                                    Destacado
-                                </span>
-                            )}
                         </a>
                     </li>
                 ))
