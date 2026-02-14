@@ -23,12 +23,12 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, fullWidth = false } 
     <body
         class="font-mono m-0 p-0 text-left bg-gradient-to-b from-gray-light/50 via-white to-white bg-no-repeat bg-[length:100%_600px] break-words text-gray-dark text-xl leading-relaxed"
     >
-        <Header />
+        <Header transparent={fullWidth} />
         <main
             class:list={[
                 fullWidth
                     ? "w-full"
-                    : "w-full max-w-3xl lg:max-w-5xl mx-auto px-4 py-12 md:px-4 md:py-4",
+                    : "w-full max-w-3xl lg:max-w-5xl mx-auto px-4 py-12 md:px-4 md:py-4 pt-20",
             ]}
         >
             <slot />

@@ -3,59 +3,203 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import { Image } from "astro:assets";
+import ScrollReveal from "../../components/ScrollReveal.astro";
+import { Icon } from "astro-icon/components";
 
 const posts = (await getCollection("blog")).sort((a, b) => {
-    // First, prioritize pinned posts
-    if (a.data.pinned && !b.data.pinned) return -1;
-    if (!a.data.pinned && b.data.pinned) return 1;
-
-    // Then sort by pubDate (newest first)
-    return (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0);
+	if (a.data.pinned && !b.data.pinned) return -1;
+	if (!a.data.pinned && b.data.pinned) return 1;
+	return (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0);
 });
+
+const featuredPosts = posts.filter((p) => p.data.pinned);
+const regularPosts = posts.filter((p) => !p.data.pinned);
 ---
 
-<BaseLayout>
-    <section class="mx-auto max-w-[80ch] px-4 py-8">
-        <ul class="m-0 flex flex-wrap gap-8 p-0 md:gap-2">
-            {
-                posts.map((post, index) => (
-                    <li
-                        class={`${index === 0 ? "mb-4 w-full text-center" : "w-full text-center md:w-[calc(50%-0.5rem)]"}`}
-                    >
-                        <a
-                            href={`/blog/${post.id}/`}
-                            class="group block transition-all duration-200 ease-in-out"
-                        >
-                            <div class="relative">
-                                {post.data.heroImage && (
-                                    <Image
-                                        width={1024}
-                                        height={512}
-                                        src={post.data.heroImage}
-                                        alt=""
-                                        class="mb-2 rounded-xl transition-all duration-200 group-hover:shadow-[var(--box-shadow)]"
-                                    />
-                                )}
-                                {post.data.pinned && (
-                                    <span class="absolute right-4 top-4 rounded bg-accent/10 px-2.5 py-0.5 text-sm font-medium text-accent shadow-lg">
-                                        Destacado
-                                    </span>
-                                )}
-                            </div>
-                            <h4
-                                class={`m-0 leading-none text-black transition-colors duration-200 group-hover:text-accent ${index === 0 ? "text-4xl md:text-2xl" : ""}`}
-                            >
-                                {post.data.title}
-                            </h4>
-                            <p class="m-0 text-gray transition-colors duration-200 group-hover:text-accent">
-                                {post.data.pubDate && (
-                                    <FormattedDate date={post.data.pubDate} />
-                                )}
-                            </p>
-                        </a>
-                    </li>
-                ))
-            }
-        </ul>
-    </section>
+<BaseLayout title="Blog" description="Artículos sobre robótica, sistemas embebidos e ingeniería" fullWidth>
+	<!-- Page Header -->
+	<section class="bg-black px-4 pt-28 pb-16 md:pt-32 md:pb-20">
+		<div class="max-w-5xl mx-auto">
+			<ScrollReveal>
+				<h1 class="text-3xl md:text-4xl text-white mb-3">
+					<span class="text-accent-secondary">&gt;</span> Blog
+				</h1>
+				<p class="text-base md:text-lg text-white/70 max-w-2xl leading-relaxed m-0">
+					Artículos sobre robótica, sistemas embebidos, visión por computador y
+					todo lo que me encuentro por el camino.
+				</p>
+			</ScrollReveal>
+		</div>
+	</section>
+
+	<!-- Featured Posts -->
+	{featuredPosts.length > 0 && (
+		<section class="px-4 py-12 md:py-16 max-w-5xl mx-auto">
+			<ScrollReveal>
+				<h2 class="text-xl md:text-2xl mb-8 flex items-center gap-3">
+					<Icon name="mdi:star" width={24} height={24} class="text-accent-secondary" />
+					Destacados
+				</h2>
+			</ScrollReveal>
+
+			{featuredPosts.map((post, i) => (
+				<ScrollReveal delay={`${Math.min(i * 0.15, 0.5)}s`}>
+					<a
+						href={`/blog/${post.id}/`}
+						class="featured-card group block mb-6 last:mb-0 no-underline"
+					>
+						<article class:list={[
+							"grid grid-cols-1 gap-0 overflow-hidden rounded-xl border border-gray-light/50 bg-white",
+							"hover:border-accent-secondary",
+							post.data.heroImage ? "md:grid-cols-5" : "",
+						]}>
+							{post.data.heroImage && (
+								<div class="md:col-span-3 overflow-hidden relative">
+									<Image
+										src={post.data.heroImage}
+										alt={post.data.title}
+										width={800}
+										height={450}
+										class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+									/>
+									<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+								</div>
+							)}
+							<div class:list={[
+								"flex flex-col justify-center p-6 md:p-8",
+								post.data.heroImage ? "md:col-span-2" : "md:col-span-5",
+							]}>
+								<span class="inline-flex items-center gap-1.5 w-fit mb-3 rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+									<Icon name="mdi:pin" width={14} height={14} />
+									Destacado
+								</span>
+								<h3 class="text-xl md:text-2xl mb-3 text-black transition-colors duration-200 group-hover:text-accent leading-tight">
+									{post.data.title}
+								</h3>
+								<p class="text-sm text-gray leading-relaxed mb-4 line-clamp-3">
+									{post.data.description}
+								</p>
+								{post.data.pubDate && (
+									<p class="text-xs text-gray/70 m-0 transition-colors duration-300 group-hover:text-accent-secondary">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								)}
+							</div>
+						</article>
+					</a>
+				</ScrollReveal>
+			))}
+		</section>
+	)}
+
+	<!-- All Posts Grid -->
+	<section class="px-4 pb-16 md:pb-20 max-w-5xl mx-auto">
+		{featuredPosts.length > 0 && regularPosts.length > 0 && (
+			<ScrollReveal>
+				<h2 class="text-xl md:text-2xl mb-8 flex items-center gap-3">
+					<Icon name="mdi:post-outline" width={24} height={24} class="text-accent-secondary" />
+					Todos los artículos
+				</h2>
+			</ScrollReveal>
+		)}
+
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+			{regularPosts.map((post, i) => (
+				<ScrollReveal delay={`${Math.min(i * 0.1, 0.5)}s`}>
+					<a
+						href={`/blog/${post.id}/`}
+						class="post-card group block h-full no-underline"
+					>
+						<article class="flex flex-col h-full overflow-hidden rounded-xl border border-gray-light/50 bg-white hover:border-accent-secondary">
+							{post.data.heroImage && (
+								<div class="aspect-video overflow-hidden relative">
+									<Image
+										src={post.data.heroImage}
+										alt={post.data.title}
+										width={600}
+										height={338}
+										class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+									/>
+									<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+								</div>
+							)}
+							<div class="flex flex-col flex-grow p-5">
+								<h3 class="text-base md:text-lg mb-2 text-black transition-colors duration-200 group-hover:text-accent leading-tight line-clamp-2">
+									{post.data.title}
+								</h3>
+								<p class="text-sm text-gray leading-relaxed mb-4 flex-grow line-clamp-2">
+									{post.data.description}
+								</p>
+								{post.data.pubDate && (
+									<p class="text-xs text-gray/70 m-0 mt-auto transition-colors duration-300 group-hover:text-accent-secondary">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								)}
+							</div>
+						</article>
+					</a>
+				</ScrollReveal>
+			))}
+		</div>
+
+		{posts.length === 0 && (
+			<div class="py-20 text-center text-gray">
+				<Icon name="mdi:post-outline" width={48} height={48} class="mx-auto mb-4 text-gray-light" />
+				<p class="text-lg">No hay artículos publicados todavía.</p>
+			</div>
+		)}
+	</section>
 </BaseLayout>
+
+<style>
+	.featured-card,
+	.post-card {
+		perspective: 800px;
+	}
+	.featured-card > article,
+	.post-card > article {
+		transition:
+			border-color 0.3s ease,
+			box-shadow 0.4s ease,
+			transform 0.15s ease-out;
+		transform-style: preserve-3d;
+		will-change: transform;
+	}
+	.featured-card:hover > article,
+	.post-card:hover > article {
+		box-shadow:
+			0 4px 16px color-mix(in srgb, var(--color-accent-secondary) 15%, transparent),
+			0 0 32px color-mix(in srgb, var(--color-accent-secondary) 10%, transparent);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.featured-card > article,
+		.post-card > article {
+			transition: none;
+		}
+		.featured-card:hover > article,
+		.post-card:hover > article {
+			transform: none !important;
+		}
+	}
+</style>
+
+<script>
+	document.querySelectorAll('.featured-card, .post-card').forEach((card) => {
+		const article = card.querySelector('article') as HTMLElement;
+		if (!article) return;
+
+		card.addEventListener('mousemove', (e) => {
+			const rect = card.getBoundingClientRect();
+			const x = ((e as MouseEvent).clientX - rect.left) / rect.width;
+			const y = ((e as MouseEvent).clientY - rect.top) / rect.height;
+			const rotateX = (0.5 - y) * 8;
+			const rotateY = (x - 0.5) * 8;
+			article.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(4px)`;
+		});
+
+		card.addEventListener('mouseleave', () => {
+			article.style.transform = '';
+		});
+	});
+</script>
