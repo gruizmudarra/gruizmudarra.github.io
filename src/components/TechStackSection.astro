@@ -1,0 +1,89 @@
+---
+import { Icon } from "astro-icon/components";
+import ScrollReveal from "./ScrollReveal.astro";
+
+const categories = [
+	{
+		title: "Sistemas Embebidos",
+		icon: "mdi:chip",
+		description:
+			"Diseño de firmware y electrónica personalizada para dispositivos de bajo nivel.",
+		tags: ["C", "Rust", "RTOS", "ARM"],
+	},
+	{
+		title: "Software & Datos",
+		icon: "mdi:code-braces",
+		description:
+			"Análisis de datos, prototipado rápido y desarrollo de herramientas.",
+		tags: ["Python", "Data Analysis", "Scripting", "Git"],
+	},
+	{
+		title: "Robótica & IoT",
+		icon: "mdi:robot-industrial",
+		description:
+			"Visión por computador, conectividad cloud y sistemas autónomos.",
+		tags: ["Computer Vision", "MQTT", "ROS", "ML"],
+	},
+];
+---
+
+<section id="stack" class="px-4 py-20 max-w-5xl mx-auto">
+	<ScrollReveal>
+		<h2 class="text-2xl md:text-3xl text-center mb-12">
+			Stack Tecnológico
+		</h2>
+	</ScrollReveal>
+
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+		{
+			categories.map((cat, i) => (
+				<ScrollReveal delay={`${i * 0.15}s`}>
+					<div class="tech-card rounded-xl p-6 h-full bg-white border border-gray-light/50 hover:border-accent-secondary hover:-translate-y-1">
+						<div class="flex items-center gap-3 mb-4">
+							<Icon
+								name={cat.icon}
+								width={36}
+								height={36}
+								class="text-accent-secondary"
+							/>
+							<h3 class="text-lg m-0">{cat.title}</h3>
+						</div>
+
+						<p class="text-sm leading-relaxed text-gray mb-5">
+							{cat.description}
+						</p>
+
+						<div class="flex flex-wrap gap-2">
+							{cat.tags.map((tag) => (
+								<span class="text-xs px-3 py-1 rounded-full bg-gray-light/60 text-gray-dark font-semibold">
+									{tag}
+								</span>
+							))}
+						</div>
+					</div>
+				</ScrollReveal>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.tech-card {
+		transition:
+			border-color 0.3s ease,
+			box-shadow 0.3s ease,
+			transform 0.25s ease;
+	}
+	.tech-card:hover {
+		box-shadow: 0 0 24px color-mix(in srgb, var(--color-accent-secondary) 12%, transparent);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.tech-card {
+			transition: none;
+		}
+		.tech-card:hover {
+			transform: none;
+		}
+	}
+</style>

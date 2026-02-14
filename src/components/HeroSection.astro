@@ -1,0 +1,170 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section
+	class="hero-bg relative flex flex-col items-center justify-center min-h-screen px-4 text-center overflow-hidden"
+>
+	<!-- Terminal-style greeting -->
+	<div class="max-w-3xl mx-auto">
+		<h1
+			class="typing-container text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 text-white"
+		>
+			<span class="typing inline-block w-0 overflow-hidden whitespace-nowrap border-r-[3px] border-r-accent-secondary pb-2">&gt; Hola, soy Germán_</span>
+		</h1>
+
+		<p
+			class="subtitle text-lg sm:text-xl md:text-2xl text-accent-secondary mb-4 font-bold"
+		>
+			Ingeniero en Mecatrónica
+		</p>
+
+		<p class="tagline text-sm sm:text-base md:text-lg text-white/70 max-w-xl mx-auto mb-10 leading-relaxed">
+			Robótica · Visión por Computador · IoT Industrial
+		</p>
+
+		<div class="cta-buttons flex flex-col sm:flex-row gap-4 justify-center">
+			<a
+				href="#proyectos"
+				class="cta-primary inline-block px-8 py-3 text-base font-bold rounded-md no-underline
+					bg-accent text-white
+					transition-all duration-300
+					hover:shadow-[0_0_24px] hover:shadow-accent/40 hover:scale-[1.03]"
+			>
+				Ver proyectos
+			</a>
+			<a
+				href="#contacto"
+				class="cta-secondary inline-block px-8 py-3 text-base font-bold rounded-md no-underline
+					border-2 border-accent-secondary text-accent-secondary
+					bg-transparent transition-all duration-300
+					hover:bg-accent-secondary hover:text-black hover:scale-[1.03]"
+			>
+				Contacto
+			</a>
+		</div>
+	</div>
+
+	<!-- Scroll indicator -->
+	<div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+		<Icon
+			name="mdi:chevron-double-down"
+			width={32}
+			height={32}
+			class="text-white/50"
+		/>
+	</div>
+</section>
+
+<style>
+	/* Hero gradient background */
+	.hero-bg {
+		background:
+			radial-gradient(
+				ellipse at 20% 50%,
+				color-mix(in srgb, var(--color-accent) 18%, transparent),
+				transparent 60%
+			),
+			radial-gradient(
+				ellipse at 80% 50%,
+				color-mix(in srgb, var(--color-accent-secondary) 10%, transparent),
+				transparent 60%
+			),
+			var(--color-black);
+		background-size: 200% 200%;
+		animation: gradient-shift 12s ease-in-out infinite alternate;
+	}
+
+	@keyframes gradient-shift {
+		0% {
+			background-position: 0% 50%;
+		}
+		100% {
+			background-position: 100% 50%;
+		}
+	}
+
+	/* Typing animation */
+	.typing {
+		animation:
+			typing 2.2s steps(20) 0.5s forwards,
+			blink 0.75s step-end infinite;
+	}
+
+	@keyframes typing {
+		to {
+			width: 100%;
+		}
+	}
+
+	@keyframes blink {
+		50% {
+			border-color: transparent;
+		}
+	}
+
+	/* Subtitle fade-in after typing */
+	.subtitle {
+		opacity: 0;
+		animation: fade-in-up 0.8s ease-out 2.8s forwards;
+	}
+
+	/* Tagline fade-in with more delay */
+	.tagline {
+		opacity: 0;
+		animation: fade-in-up 0.8s ease-out 3.3s forwards;
+	}
+
+	/* CTA buttons fade-in */
+	.cta-buttons {
+		opacity: 0;
+		animation: fade-in-up 0.8s ease-out 3.8s forwards;
+	}
+
+	@keyframes fade-in-up {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Scroll indicator bounce */
+	.scroll-indicator {
+		opacity: 0;
+		animation:
+			fade-in-up 0.6s ease-out 4.2s forwards,
+			bounce 2s ease-in-out 4.8s infinite;
+	}
+
+	@keyframes bounce {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(8px);
+		}
+	}
+
+	/* Respect reduced motion */
+	@media (prefers-reduced-motion: reduce) {
+		.typing {
+			width: 100%;
+			animation: none;
+		}
+		.subtitle,
+		.tagline,
+		.cta-buttons,
+		.scroll-indicator {
+			opacity: 1;
+			animation: none;
+		}
+		.hero-bg {
+			animation: none;
+		}
+	}
+</style>

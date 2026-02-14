@@ -1,0 +1,64 @@
+---
+import { Icon } from "astro-icon/components";
+import ScrollReveal from "./ScrollReveal.astro";
+
+const links = [
+	{
+		label: "LinkedIn",
+		href: "https://linkedin.com/in/gruizmudarra",
+		icon: "mdi:linkedin",
+	},
+	{
+		label: "GitHub",
+		href: "https://github.com/grmnlabs",
+		icon: "mdi:github",
+	},
+	{
+		label: "Mastodon",
+		href: "https://fosstodon.org/@gruizmudarra",
+		icon: "mdi:mastodon",
+	},
+];
+---
+
+<section
+	id="contacto"
+	class="px-4 py-20 bg-black text-white"
+>
+	<div class="max-w-3xl mx-auto text-center">
+		<ScrollReveal>
+			<h2 class="text-2xl md:text-3xl mb-4 text-white">
+				¿Hablamos?
+			</h2>
+			<p
+				class="text-base text-white/70 mb-10 max-w-lg mx-auto leading-relaxed"
+			>
+				Siempre abierto a nuevas oportunidades, colaboraciones y
+				proyectos interesantes. No dudes en contactarme.
+			</p>
+		</ScrollReveal>
+
+		<ScrollReveal delay="0.15s">
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				{
+					links.map((link) => (
+						<a
+							href={link.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="contact-link inline-flex items-center justify-center gap-3 px-6 py-3
+								text-base font-semibold no-underline rounded-md
+								border border-white/20 text-white
+								transition-all duration-300
+								hover:border-accent-secondary hover:text-accent-secondary
+								hover:shadow-[0_0_20px] hover:shadow-accent-secondary/15"
+						>
+							<Icon name={link.icon} width={22} height={22} />
+							{link.label}
+						</a>
+					))
+				}
+			</div>
+		</ScrollReveal>
+	</div>
+</section>

@@ -24,8 +24,7 @@ const trackId = `${carouselId}-track`;
 <section class="mb-12">
     <h2
         id={headingId}
-        class="mb-6 text-center font-extrabold md:mb-12"
-        data-carousel-heading
+        class="mb-6 text-center font-extrabold md:mb-12 text-[clamp(2.5rem,4vw,3.25rem)] leading-tight -tracking-[0.01em]"
     >
         Posts Destacados
     </h2>
@@ -50,7 +49,7 @@ const trackId = `${carouselId}-track`;
                             <div class="carousel-slide w-full flex-shrink-0 px-4 md:w-1/2 lg:w-1/3">
                                 <a
                                     href={`/blog/${post.id}/`}
-                                    class="group flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                    class="group flex h-full flex-col overflow-hidden rounded-lg border border-gray-light bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                                     aria-label={`Leer más sobre ${post.data.title}`}
                                 >
                                     <article class="flex h-full flex-col">
@@ -68,10 +67,10 @@ const trackId = `${carouselId}-track`;
                                             </div>
                                         )}
                                         <div class="flex flex-grow flex-col p-4 text-left">
-                                            <h3 class="title-clamp mb-2 font-bold text-gray-900">
+                                            <h3 class="mt-4 mb-2 font-bold text-gray-dark text-[1.35rem] leading-[1.9rem] line-clamp-2">
                                                 {post.data.title}
                                             </h3>
-                                            <p class="description-clamp mb-2 flex-grow text-base leading-relaxed text-gray-600">
+                                            <p class="mb-2 flex-grow text-base leading-relaxed text-gray line-clamp-3">
                                                 {post.data.description}
                                             </p>
                                         </div>
@@ -86,7 +85,7 @@ const trackId = `${carouselId}-track`;
                     <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
                         <button
                             type="button"
-                            class="rounded-full bg-gray-100 p-3 text-gray-700 shadow transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            class="rounded-full bg-gray-light p-3 text-gray-dark shadow transition hover:bg-gray-light/80 focus:outline-none focus:ring-2 focus:ring-accent"
                             aria-label="Anterior"
                             aria-controls={trackId}
                             data-carousel-prev
@@ -107,7 +106,7 @@ const trackId = `${carouselId}-track`;
                         </button>
                         <button
                             type="button"
-                            class="rounded-full bg-gray-100 p-3 text-gray-700 shadow transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            class="rounded-full bg-gray-light p-3 text-gray-dark shadow transition hover:bg-gray-light/80 focus:outline-none focus:ring-2 focus:ring-accent"
                             aria-label="Siguiente"
                             aria-controls={trackId}
                             data-carousel-next
@@ -130,44 +129,12 @@ const trackId = `${carouselId}-track`;
                 )}
             </div>
         ) : (
-            <div class="py-12 text-center text-gray-500">
+            <div class="py-12 text-center text-gray">
                 <p class="text-lg">No hay posts destacados disponibles.</p>
             </div>
         )
     }
 </section>
-
-<style>
-    :global(h2[data-carousel-heading]) {
-        font-size: clamp(2.5rem, 4vw, 3.25rem);
-        line-height: 1.2;
-        letter-spacing: -0.01em;
-    }
-
-    :global([data-carousel] h3.title-clamp) {
-        margin-top: 1rem;
-        font-size: 1.35rem;
-        line-height: 1.9rem;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-height: 3.8rem; /* 2 lines */
-    }
-
-    :global([data-carousel] img) {
-        border-radius: 0;
-    }
-
-    :global([data-carousel] p.description-clamp) {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-</style>
 
 <script type="module">
     (() => {

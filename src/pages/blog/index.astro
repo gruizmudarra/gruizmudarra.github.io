@@ -33,22 +33,21 @@ const posts = (await getCollection("blog")).sort((a, b) => {
                                         height={512}
                                         src={post.data.heroImage}
                                         alt=""
-                                        class="mb-2 rounded-xl transition-all duration-200 group-hover:shadow-[0_2px_6px_rgba(96,115,159,0.25),0_8px_24px_rgba(96,115,159,0.33),0_16px_32px_rgba(96,115,159,0.33)]"
+                                        class="mb-2 rounded-xl transition-all duration-200 group-hover:shadow-[var(--box-shadow)]"
                                     />
                                 )}
                                 {post.data.pinned && (
-                                    <span class="absolute right-4 top-4 rounded bg-blue-100 px-2.5 py-0.5 text-sm font-medium text-blue-800 shadow-lg">
+                                    <span class="absolute right-4 top-4 rounded bg-accent/10 px-2.5 py-0.5 text-sm font-medium text-accent shadow-lg">
                                         Destacado
                                     </span>
                                 )}
                             </div>
-                            {/* Using !important to override BaseLayout's global h4 color style */}
                             <h4
-                                class={`m-0 leading-none text-[var(--black)] transition-colors duration-200 group-hover:!text-[var(--accent)] ${index === 0 ? "text-4xl md:text-2xl" : ""}`}
+                                class={`m-0 leading-none text-black transition-colors duration-200 group-hover:text-accent ${index === 0 ? "text-4xl md:text-2xl" : ""}`}
                             >
                                 {post.data.title}
                             </h4>
-                            <p class="m-0 text-[rgb(var(--gray))] transition-colors duration-200 group-hover:text-[var(--accent)]">
+                            <p class="m-0 text-gray transition-colors duration-200 group-hover:text-accent">
                                 {post.data.pubDate && (
                                     <FormattedDate date={post.data.pubDate} />
                                 )}
